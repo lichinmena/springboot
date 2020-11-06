@@ -14,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 /**
  *
@@ -92,13 +94,19 @@ public class WithThymeleaf
     }
     
     @PostMapping("/guardar")
-    public String guardar(Persona persona)
+    public String guardar(@Valid Persona persona, Errors errores)
     {
+        if(errores.hasErrors())
+        {
+            return "modificar";
+        }
+        
         log.info("/Guardar");
         log.info(persona.getNombre());
         log.info(persona.getApellido());
         log.info(persona.getEmail());
         log.info(persona.getTelefono());
+        
         personaService.guardar(persona);
         return "redirect:/persona";
     }
