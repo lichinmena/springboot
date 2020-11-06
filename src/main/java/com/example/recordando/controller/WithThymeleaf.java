@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.recordando;
+package com.example.recordando.controller;
 
+import com.example.recordando.model.Persona;
+import com.example.recordando.service.PersonaService;
 import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 /**
  *
  * @author luis
@@ -25,7 +28,7 @@ public class WithThymeleaf
     private String msg;
     
     @Autowired
-    private PersonaDao personaDao;
+    private PersonaService personaService;
     
     @GetMapping("/page")
     public String page(Model model)
@@ -56,8 +59,8 @@ public class WithThymeleaf
         list.add(persona2);
         
         List<Persona> listAux = new ArrayList<>();
-        personaDao.findAll().forEach(x -> listAux.add(x));
-        
+        //personaService.findAll.forEach(x -> listAux.add(x));
+        listAux = personaService.listarPersonas();
         
         log.info("Ejecutando el controlador page tipo Spring mvc");
         model.addAttribute("mensaje", mensaje);
@@ -66,5 +69,52 @@ public class WithThymeleaf
         model.addAttribute("personas",list);
         model.addAttribute("listAux",listAux);
         return "index";
+    }
+    
+    
+    @GetMapping("/persona")
+    public String persona(Model model)
+    {
+        List<Persona> listAux = new ArrayList<>();
+        //personaService.findAll.forEach(x -> listAux.add(x));
+        listAux = personaService.listarPersonas();
+        
+        log.info("Ejecutando el controlador persona tipo Spring mvc");
+        model.addAttribute("listAux",listAux);
+        return "persona";
+    }
+    
+    
+    @GetMapping("/agregar")
+    public String agregar(Persona persona)
+    {
+        return "modificar";
+    }
+    
+    @PostMapping("/guardar")
+    public String guardar(Persona persona)
+    {
+        log.info("/Guardar");
+        log.info(persona.getNombre());
+        log.info(persona.getApellido());
+        log.info(persona.getEmail());
+        log.info(persona.getTelefono());
+        personaService.guardar(persona);
+        return "redirect:/persona";
+    }
+    
+    @GetMapping("/editar/{id}")
+    public String editar(Persona persona, Model model)
+    {
+        persona = personaService.encontrarPersona(persona);
+        model.addAttribute("persona", persona);
+        return "modificar";
+    }
+    
+    @GetMapping("/eliminar/{id}")
+    public String elminar(Persona persona)
+    {
+        personaService.eliminar(persona);
+        return "redirect:/persona";
     }
 }
