@@ -14,10 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
 /**
  *
  * @author luis
@@ -74,55 +71,5 @@ public class WithThymeleaf
     }
     
     
-    @GetMapping("/persona")
-    public String persona(Model model)
-    {
-        List<Persona> listAux = new ArrayList<>();
-        //personaService.findAll.forEach(x -> listAux.add(x));
-        listAux = personaService.listarPersonas();
-        
-        log.info("Ejecutando el controlador persona tipo Spring mvc");
-        model.addAttribute("listAux",listAux);
-        return "persona";
-    }
     
-    
-    @GetMapping("/agregar")
-    public String agregar(Persona persona)
-    {
-        return "modificar";
-    }
-    
-    @PostMapping("/guardar")
-    public String guardar(@Valid Persona persona, Errors errores)
-    {
-        if(errores.hasErrors())
-        {
-            return "modificar";
-        }
-        
-        log.info("/Guardar");
-        log.info(persona.getNombre());
-        log.info(persona.getApellido());
-        log.info(persona.getEmail());
-        log.info(persona.getTelefono());
-        
-        personaService.guardar(persona);
-        return "redirect:/persona";
-    }
-    
-    @GetMapping("/editar/{id}")
-    public String editar(Persona persona, Model model)
-    {
-        persona = personaService.encontrarPersona(persona);
-        model.addAttribute("persona", persona);
-        return "modificar";
-    }
-    
-    @GetMapping("/eliminar/{id}")
-    public String elminar(Persona persona)
-    {
-        personaService.eliminar(persona);
-        return "redirect:/persona";
-    }
 }

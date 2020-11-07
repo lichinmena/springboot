@@ -13,7 +13,7 @@
         
         <header th:replace="layout/plantilla :: header"></header>
         
-        <a th:href="@{/agregar}">[[ #{persona.crear} ]]</a>
+        <a th:href="@{/personas/agregar}">[[ #{persona.crear} ]]</a>
         <div th:if="${listAux != null and !listAux.empty}">
             <table border="1">
                 <tr>
@@ -29,8 +29,8 @@
                         <td th:text="${persona.apellido}">Apellido</td>
                         <td th:text="${persona.email}">Email</td>
                         <td th:text="${persona.telefono}">Telefono</td>
-                        <td><a th:href="@{/editar/} + ${persona.id}" th:text="#{accion.persona.editar}"/></td>
-                        <td><a th:href="@{/eliminar/} + ${persona.id}" th:text="#{accion.persona.eliminar}"/></td>
+                        <td><a th:href="@{/personas/editar/} + ${persona.id}" th:text="#{accion.persona.editar}"/></td>
+                        <td><a th:href="@{/personas/eliminar/} + ${persona.id}" th:text="#{accion.persona.eliminar}"/></td>
 
                      </tr>
             </table>
