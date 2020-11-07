@@ -1,0 +1,11 @@
+insert into usuarios (username, password) values ('admin','123')
+insert into usuarios (username, password) values ('user','123')
+select * from usuarios
+
+insert into roles (nombre, id_usuario) values ('ROLE_ADMIN', 1)
+insert into roles (nombre, id_usuario) values ('ROLE_USER', 1)
+insert into roles (nombre, id_usuario) values ('ROLE_USER', 2)
+select * from roles
+
+
+ALTER SEQUENCE roles_id_seq restart 1
