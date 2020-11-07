@@ -12,6 +12,9 @@ import java.util.List;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -31,13 +34,19 @@ public class PersonaController
         @Autowired
     private PersonaService personaService;
     
+    /**
+     *
+     * @param model
+     * @param user
+     * @return
+     */
     @GetMapping("/")
-    public String persona(Model model)
+    public String persona(Model model, @AuthenticationPrincipal User user)
     {
         List<Persona> listAux = new ArrayList<>();
         //personaService.findAll.forEach(x -> listAux.add(x));
         listAux = personaService.listarPersonas();
-        
+        log.info("Usuario que hizo login; " + user);
         log.info("Ejecutando el controlador persona tipo Spring mvc");
         model.addAttribute("listAux",listAux);
         return "persona";
