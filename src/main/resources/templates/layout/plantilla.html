@@ -12,12 +12,12 @@
     <body>
         
         <header th:fragment="header">
-            <h1>Control de clientes</h1>
+            <h1 th:text="#{plantilla.titulo}">Control de clientes</h1>
         </header>
         
         
           <footer th:fragment="footer">
-              <p>Derechos Reservados<a href="decflow.com" target="_blank">Decflow.com</a></p>
+              <p> [[ #{plantilla.pie-pagina} ]]<a href="decflow.com" target="_blank">Decflow.com</a></p>
         </footer>
     </body>
 </html>
