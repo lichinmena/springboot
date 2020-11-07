@@ -2,7 +2,8 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http//www.w3.org/1999/xhtml">
+      xmlns="http//www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>Plantilla</title>
         <meta charset="UTF-8">
@@ -23,6 +24,8 @@
                   <a th:href="@{/personas/(lang=en)}">En</a>
                   <span>[[ #{plantilla.pie-pagina} ]]<a href="decflow.com" target="_blank">Decflow.com</a></span>
                   <form method="post" th:action="@{/logout}">
+                      <b>User:</b><span sec:authentication="name">Usuario que hizo login</span> |
+                      <b>Roles:</b><span sec:authentication="principal.authorities">Roles</span> |
                       <a href="#" onclick="this.parentNode.submit();">Logout</a>
                   </form>
               </div>
