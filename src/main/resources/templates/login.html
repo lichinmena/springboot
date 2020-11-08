@@ -1,14 +1,18 @@
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:replace="layout/plantilla :: head">
         <title>Login</title>
-        <meta charset="UTF-8">
     </head>
     
     
     <body>
+         <header th:replace="layout/plantilla :: header"></header>
         <h1>Login</h1>
+        
+        
         
         <form method="POST" th:action="@{/login}">
             <label for="username">Username:</label>
