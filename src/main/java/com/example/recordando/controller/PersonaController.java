@@ -46,9 +46,16 @@ public class PersonaController
         List<Persona> listAux = new ArrayList<>();
         //personaService.findAll.forEach(x -> listAux.add(x));
         listAux = personaService.listarPersonas();
+        Double saldoTotal = 0.0;
+        for(Persona p : listAux)
+        {
+            saldoTotal += p.getSaldo();
+        }
         log.info("Usuario que hizo login; " + user);
         log.info("Ejecutando el controlador persona tipo Spring mvc");
         model.addAttribute("listAux",listAux);
+        model.addAttribute("saldoTotal",saldoTotal);
+        model.addAttribute("totalClientes",listAux.size());
         return "persona";
     }
     
