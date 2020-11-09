@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller("/home")
 public class HomeController 
 {
+    //Si cambia la ruta
     @GetMapping("/home")
     public String home()
     {
@@ -26,5 +27,13 @@ public class HomeController
     public String google()
     {
         return "redirect:https://google.com.mx";
+    }
+    
+    
+    //No cambia la ruta, es para rutas propias del proyecto, ejecuta request distpacher
+    @GetMapping("/home2")
+    public String home2()
+    {
+        return "forward:/personas/";
     }
 }
