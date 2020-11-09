@@ -9,6 +9,7 @@ import com.example.recordando.model.Persona;
 import com.example.recordando.service.PersonaService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -112,6 +114,53 @@ public class PersonaController
         model.addAttribute("resultado", "El texto enviado por la url es: " + texto);
         return "testPage";
     }
+    
+    
+    //Elegante y moderno
+    @GetMapping("/mix-params")
+    public String param(@RequestParam String saludo, Integer numero, Model model)
+    {
+        model.addAttribute("resultado", "El saludo es " + saludo +" y el numero es: " + numero);
+        return "testPage";
+    }
+    
+    
+    //Arcaico, pero mas limpio
+    @GetMapping("/mix-params-arc")
+    public String param(HttpServletRequest request, Model model)
+    {
+        System.out.println("mix-params-arc");
+        String saludo = request.getParameter("saludo");
+        Integer numero = Integer.parseInt(request.getParameter("numero"));
+        model.addAttribute("resultado", "El saludo es " + saludo +" y el numero es: " + numero);
+        return "testPage";
+    }
+    
+    
+    //Otra forma de enviar parametros de la vista al controllador
+    //http://localhost:8080/personas/otro/cualquier_valor
+    @GetMapping("/otro/{texto}")
+    public String variables(@PathVariable String texto, Model model)
+    {
+        model.addAttribute("titulo", "Recibir con PathVariable");
+        model.addAttribute("miCadena", texto);
+        return "variables/ver";
+    }
+    
+    
+    
+    
+    @GetMapping("/otro-mix/{texto}/{numero}")
+    public String variables(@PathVariable String texto,
+                            @PathVariable Integer numero,
+                            Model model)
+    {
+        model.addAttribute("titulo", "Recibir con PathVariable");
+        model.addAttribute("miCadena", texto);
+        model.addAttribute("miNumero", numero);
+        return "variables/ver";
+    }
+    
     
     
     
