@@ -9,6 +9,11 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        
+        
+        <link rel="stylesheet" type="text/css" th:href="@{/css/my_style.css}"/>
+        
+        
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/popper.min.js}"/></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"/></script>
@@ -18,6 +23,10 @@
     <body>
         
         <header th:fragment="header">
+            
+            <h4 class="color-rojo">Titulo con h4</h4>
+            <h5 class="color-azul">Titulo con h5</h5>
+            <img th:src="@{/images/014-task.png}" width="100"/>
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
                 <div class="container">
                     <a th:href="@{/}" class="navbar-brand" th:text="#{plantilla.titulo}">Control Clientes</a>
