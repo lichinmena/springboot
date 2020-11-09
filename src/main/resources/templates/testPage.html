@@ -1,0 +1,23 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http//www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: headss">
+        <title>testPage</title>
+        <meta charset="UTF-8">
+    </head>
+    
+    
+    <body>
+        
+        <h1>[[${cadenaGeneral}]]</h1>
+        
+        <h1 th:text="${resultado}"></h1>
+        
+        <a th:href="@{/personas/string(texto='Hola desde la vista 01')}">/personas/string?texto=Hola desde la vista 01</a>
+        <br />
+        <a th:href="@{/personas/string(texto='Hola desde la vista 02')}">/personas/string?texto=Hola desde la vista 02</a>
+    </body>
+</html>

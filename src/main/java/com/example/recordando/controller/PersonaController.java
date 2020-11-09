@@ -19,8 +19,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -97,5 +99,32 @@ public class PersonaController
     {
         personaService.eliminar(persona);
         return "redirect:/personas/";
+    }
+    
+    
+    
+    
+    /*http://localhost:8080/personas/string?texto=Hola%20Luis*/
+    @GetMapping("/string")
+    public String param(@RequestParam(name="texto", defaultValue = "No existe el parametro") String texto, Model model)
+    {
+        System.out.println("texto :: " + texto);
+        model.addAttribute("resultado", "El texto enviado por la url es: " + texto);
+        return "testPage";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Es comun a todos lo metodos del controllador
+    @ModelAttribute("cadenaGeneral")
+    public String cadenaParaTodosLosMetodos()
+    {
+        return "Esta es la cadena general, es comun para todos los metodos del controlador";
     }
 }
