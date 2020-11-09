@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
@@ -35,7 +36,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class PersonaController 
 {
-        @Autowired
+    @Value("${texto1}")
+    private String texto1;
+    
+    @Value("${texto2}")
+    private String texto2;
+    
+    @Value("${texto3}")
+    private String texto3;
+    
+    
+    @Autowired
     private PersonaService personaService;
     
     /**
@@ -158,6 +169,9 @@ public class PersonaController
         model.addAttribute("titulo", "Recibir con PathVariable");
         model.addAttribute("miCadena", texto);
         model.addAttribute("miNumero", numero);
+        model.addAttribute("texto1", texto1);
+        model.addAttribute("texto2", texto2);
+        model.addAttribute("texto3", texto3);
         return "variables/ver";
     }
     

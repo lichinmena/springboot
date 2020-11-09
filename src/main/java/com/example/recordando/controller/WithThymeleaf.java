@@ -26,6 +26,8 @@ public class WithThymeleaf
     @Value("${index.msg}")
     private String msg;
     
+
+    
     @Autowired
     private PersonaService personaService;
     
