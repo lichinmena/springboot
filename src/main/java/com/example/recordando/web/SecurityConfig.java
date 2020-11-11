@@ -57,6 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     {
         http.authorizeRequests()
                 .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/factura/**").permitAll()
                 .antMatchers("/","/personas/editar/**", "/personas/agregar/**","/personas/eliminar")
                 .hasRole("ADMIN")
                 .antMatchers("/","personas/")
