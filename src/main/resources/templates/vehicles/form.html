@@ -14,6 +14,15 @@
         <h3 th:text="${titulo}"></h3>
         
         <form th:action="@{/vehicles/save}" method="post" th:object="${vehicle}">
+            
+            <div>
+                <label for="identificador">Identificador</label>
+                <div>
+                    <input type="text" id="identificador" th:field="*{identificador}"/>
+                    <div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
+                </div>
+            </div>
+            
             <div>
                 <label for="serie">Serie</label>
                 <div>

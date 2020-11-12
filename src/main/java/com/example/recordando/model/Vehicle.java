@@ -6,6 +6,7 @@
 package com.example.recordando.model;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Data;
 
@@ -16,6 +17,8 @@ import lombok.Data;
 @Data
 public class Vehicle
 {
+    @NotEmpty
+    @Pattern(regexp = "[\\d]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
     private String identificador;
     
     @NotEmpty
