@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http//www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: headss">
+        <title th:text="${titulo}">Form vehicle</title>
+        <meta charset="UTF-8">
+    </head>
+        
+    
+    <body>
+        <h3 th:text="${titulo}"></h3>
+        
+        <form th:action="@{/vehicles/save}" method="post" th:object="${vehicle}">
+            <div>
+                <label for="serie">Serie</label>
+                <div>
+                    <input type="text" id="serie" th:field="*{serie}"/>
+                    <div th:if="${#fields.hasErrors('serie')}" th:errors="*{serie}"></div>
+                </div>
+            </div>
+            
+            
+             <div>
+                <label for="placa">Placa</label>
+                <div>
+                    <input type="text" id="placa" th:field="*{placa}"/>
+                    <div th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}"></div>
+                </div>
+            </div>
+            
+            <div>
+                <div>
+                    <input type="submit" value="Envíar"/>
+                </div>
+            </div>
+                
+                
+        </form>
+    </body>
+</html>
