@@ -5,11 +5,18 @@
  */
 package com.example.recordando.model;
 
+import java.util.Date;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -29,6 +36,17 @@ public class Vehicle
     //@NotBlank
     @NotEmpty
     private String placa;
+    
+    @NotNull
+    @Min(5)
+    @Max(5000)
+    private Integer cuenta;
+    
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@Past
+    //@Future
+    private Date fechaNacimiento;
     
     
 }
