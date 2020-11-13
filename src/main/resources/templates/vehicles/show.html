@@ -22,6 +22,8 @@
             <li th:text="${#dates.format(vehicle.fechaNacimiento, 'dd/MM/yyyy')}"></li> 
             <li th:text="${#calendars.format(vehicle.fechaNacimiento, 'dd-MM-yyyy')}"></li> 
             <li th:text="${vehicle.pais}"></li>
+            <li th:text="${vehicle.pais.id}"></li>
+            <li th:text="${vehicle.pais.nombre}"></li>
         </ul>
        
                 

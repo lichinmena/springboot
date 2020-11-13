@@ -5,6 +5,7 @@
  */
 package com.example.recordando.controller;
 
+import com.example.recordando.model.Pais;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -93,6 +94,16 @@ public class VehicleController
        paises.put("AR", "Argentina");
        paises.put("PE", "Peru");
        return paises;
+    }
+    
+    @ModelAttribute("listaPaises")
+    public List<Pais> listaPaises()
+    {
+        return  Arrays.asList(new Pais(1, "ES", "España"),
+                  new Pais(2, "MX", "Mexico"),
+                  new Pais(3, "AR", "Argentina"),
+                  new Pais(4, "CH", "Chile")
+                );
     }
     
 }

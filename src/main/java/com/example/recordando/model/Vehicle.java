@@ -6,6 +6,7 @@
 package com.example.recordando.model;
 
 import java.util.Date;
+import javax.validation.Valid;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -48,8 +49,8 @@ public class Vehicle
     //@Future
     private Date fechaNacimiento;
     
-    @NotEmpty
-    private String pais;
+    @Valid
+    private Pais pais;
     
     
 }
