@@ -43,10 +43,13 @@ public class Vehicle
     private Integer cuenta;
     
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     //@Past
     //@Future
     private Date fechaNacimiento;
+    
+    @NotEmpty
+    private String pais;
     
     
 }

@@ -15,6 +15,17 @@
         
         <form th:action="@{/vehicles/save}" method="post" th:object="${vehicle}">
             
+             <div>
+                <label for="pais">País</label>
+                <div>
+                    <select id="pais" th:field="*{pais}">
+                        <option value="">--Seleccionar</option>
+                        <option th:each="pais: ${paises}" th:text="${pais}" th:value="${pais}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+                </div>
+            </div>
+            
             <div>
                 <label for="identificador">Identificador</label>
                 <div>
@@ -52,7 +63,7 @@
              <div>
                 <label for="fechaNacimiento">Fecha</label>
                 <div>
-                    <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" placeholder="yyyy/MM/dd"/>
+                    <input type="text" id="fechaNacimiento" th:field="*{fechaNacimiento}" placeholder="yyyy/MM/dd"/>
                     <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
                 </div>
             </div>
