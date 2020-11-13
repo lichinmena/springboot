@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.recordando.model.Vehicle;
 import com.example.recordando.validation.VehicleValidator;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -77,10 +79,20 @@ public class VehicleController
     
     
     @ModelAttribute("paises")
-
     public List<String> paises()
     {
         return Arrays.asList("México", "España", "Chile", "Perú", "Venenzuela");
+    }
+    @ModelAttribute("paisesMap")
+    public Map<String, String> paisesMapa()
+    {
+       Map<String, String> paises = new HashMap<>();
+       paises.put("ES", "España");
+       paises.put("MX", "México");
+       paises.put("CL", "Chile");
+       paises.put("AR", "Argentina");
+       paises.put("PE", "Peru");
+       return paises;
     }
     
 }
