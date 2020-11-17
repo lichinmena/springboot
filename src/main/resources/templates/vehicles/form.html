@@ -27,6 +27,15 @@
             </div>
             
             <div>
+                <label>Usos</label>
+                <div th:each="uso: ${listaUsosString}">
+                    <input type="checkbox" th:field="*{usos}" th:value="${uso}"/>
+                    <label th:for="${#ids.prev('usos')}" th:text="${uso}"></label>
+                </div>
+                <div th:if="${#fields.hasErrors('usos')}" th:errors="*{usos}"></div>
+            </div>
+            
+            <div>
                 <label for="identificador">Identificador</label>
                 <div>
                     <input type="text" id="identificador" th:field="*{identificador}"/>

@@ -26,7 +26,11 @@
             <li th:text="${vehicle.pais.nombre}"></li>
         </ul>
        
-                
+        <div>Usos</div>
+        
+        <ul>
+            <li th:each="uso: ${vehicle.usos}" th:text="${uso}"></li>
+        </ul>
                 
         </form>
     </body>

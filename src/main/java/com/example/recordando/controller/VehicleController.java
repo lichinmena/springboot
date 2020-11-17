@@ -15,6 +15,7 @@ import com.example.recordando.model.Vehicle;
 import com.example.recordando.service.PaisService;
 import com.example.recordando.validation.VehicleValidator;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +62,13 @@ public class VehicleController
         vehicle.setIdentificador("12.456.789-K");
         vehicle.setPlaca("GAS-123");
         vehicle.setSerie("1234567812345678");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH,2);
+        cal.set(Calendar.MONTH, 5);
+        cal.set(Calendar.YEAR,2020);
+        vehicle.setFechaNacimiento(cal.getTime());
+        vehicle.setCuenta(4000);
+        
         model.addAttribute("titulo","Formulario de vehículo");
         model.addAttribute("vehicle", vehicle);
         return "vehicles/form";
@@ -114,6 +122,12 @@ public class VehicleController
                   new Pais(4, "CH", "Chile")
                 );
         */
+    }
+    
+    @ModelAttribute("listaUsosString")
+    public List<String> listaUsosString()
+    {
+        return Arrays.asList("PARTICULAR","TRANSPORTE PUBLICO","CARGA","PLATAFORMAS");
     }
     
 }

@@ -6,6 +6,7 @@
 package com.example.recordando.model;
 
 import java.util.Date;
+import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
@@ -53,5 +54,8 @@ public class Vehicle
     @NotNull
     private Pais pais;
     
+    
+    @NotEmpty
+    private List<String> usos;
     
 }
