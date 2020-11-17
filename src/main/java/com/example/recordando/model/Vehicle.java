@@ -49,7 +49,8 @@ public class Vehicle
     //@Future
     private Date fechaNacimiento;
     
-    @Valid
+    //@Valid
+    @NotNull
     private Pais pais;
     
     

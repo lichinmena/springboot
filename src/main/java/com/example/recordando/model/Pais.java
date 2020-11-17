@@ -15,7 +15,6 @@ import lombok.Data;
 @Data
 public class Pais 
 {
-    @NotNull
     private Integer id;
     private String  codigo;
     
