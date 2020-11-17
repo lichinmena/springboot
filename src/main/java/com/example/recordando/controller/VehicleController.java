@@ -92,7 +92,7 @@ public class VehicleController
     }
     
     
-    /*
+    
     @ModelAttribute("paises")
     public List<String> paises()
     {
@@ -109,7 +109,7 @@ public class VehicleController
        paises.put("PE", "Peru");
        return paises;
     }
-    */
+    
     
     @ModelAttribute("listaPaises")
     public List<Pais> listaPaises()
@@ -130,4 +130,14 @@ public class VehicleController
         return Arrays.asList("PARTICULAR","TRANSPORTE PUBLICO","CARGA","PLATAFORMAS");
     }
     
+     @ModelAttribute("listaUsosMapa")
+    public Map<String, String> listaUsosMapa()
+    {
+       Map<String, String> usos = new HashMap<>();
+       usos.put("PARTICULAR", "PARTICULAR");
+       usos.put("TRANSPORTE PUBLICO", "TRANSPORTE PUBLICO");
+       usos.put("CARGA", "CARGA");
+       usos.put("PLATAFORMAS", "PLATAFORMAS");;
+       return usos;
+    }
 }
