@@ -58,4 +58,7 @@ public class Vehicle
     @NotEmpty
     private List<String> usos;
     
+    
+   @NotEmpty
+    private List<Role> roles;
 }
